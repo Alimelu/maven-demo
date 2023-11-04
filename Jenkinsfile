@@ -12,7 +12,7 @@ pipeline {
                 }
         stage("Docker") {
             steps {
-                    sh 'docker build . -t myimages:1.0.3'
+                    sh 'docker build . -t myimages:1.0.4'
          
                 }
                 }
@@ -23,11 +23,11 @@ pipeline {
                         // Use the 'withCredentials' block to securely provide credentials
 
                         def dockerRegistryURL = 'hub.docker.com'
-                        def dockerImageName = 'myimages:1.0.3'
+                        def dockerImageName = 'myimages:1.0.4'
 
                         sh """
                             echo \${DOCKER_PASSWORD} | docker login --username \${DOCKER_USERNAME} --password-stdin \${dockerRegistryURL}
-                            docker push docker.io/mbaig2k7/myimages:1.0.3
+                            docker push docker.io/mbaig2k7/myimages:1.0.4
                         """
                     }
                 }
