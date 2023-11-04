@@ -10,12 +10,19 @@ pipeline {
          
                 }
                 }
+
+        stage('sonar Analysis') {
+           steps {
+               sh ''' mvn sonar:sonar -Dsonar.url=http://3.145.150.72:9000/ -Dsonar.login=squ_0800cfaf731cf33f30a78e941a21ca66ac19133e
+                  -Dsonar.projectkey=maven-demo '''
         stage("Docker") {
             steps {
                     sh 'docker build . -t mbaig2k7/myimages:1.0.4'
          
                 }
                 }
+      
+        
        stage('Docker Login') {
             steps {
                 script {
